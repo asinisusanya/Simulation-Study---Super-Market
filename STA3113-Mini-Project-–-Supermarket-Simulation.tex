@@ -1,0 +1,1397 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{5}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot[L]{Reg No: S20841}
+\fancyfoot[C]{Page \thepage}
+\fancyfoot[R]{Course: STA3113}
+\renewcommand{\footrulewidth}{0.4pt} 
+
+\usepackage{ragged2e}
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage{bookmark}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+
+\begin{titlepage}
+    \centering
+    \vspace{4cm}
+    {\LARGE\bfseries SUPERMARKET SIMULATION \par}
+    \vspace{1cm}
+    {\Large\bfseries STA3113 MINI PROJECT\par}
+    \vspace{3cm}
+    {\large
+    A project report presented by:\par}
+    {\Large\bfseries S20841 - T.T.ASINI SUSANYA KARUNARATHNA\par}
+    \vspace{2.5cm}
+    {\large
+    In fulfillment of the requirement for the course of\par}
+    {\Large\bfseries
+    STA3113 - STATISTICAL SIMULATION\par}
+    \vspace{2.5cm}
+    {\large
+    To the board of study in\par}
+    {\large\bfseries
+    Department Of Statistics And Computer Science\par}
+     \vspace{1cm}
+    {\large Of the\par}
+    {\large\bfseries
+    Faculty Of Science\par
+    University Of Peradeniya\par
+    }
+    \vfill
+    {\large
+    \centering
+    Date: 24 July, 2025
+    \par
+    }
+\end{titlepage}
+
+\newpage
+\begingroup
+\setlength{\parskip}{0pt}
+\setlength{\parindent}{0pt}
+\centering
+\tableofcontents
+\endgroup
+
+\newpage
+    \centering
+
+\section{Abstract}\label{abstract}
+
+\justifying
+
+This report presents a comprehensive discrete-event simulation of a
+supermarket checkout system designed to evaluate the operational
+performance under varying customer loads and cashier service
+capabilities. The model represents a realistic supermarket environment
+with multiple checkout counters and customer arrivals following a
+Poisson process. Each customer engages in a log-normal shopping time
+before joining the shortest available checkout queue. The checkout
+service times are modeled as exponential distributions with varying
+rates to reflect differences in cashier efficiency.
+
+The simulation was executed over 30 independent replications to obtain
+statistically reliable estimates of key performance indicators including
+average customer waiting times at each checkout counter, cashier
+utilization rates, overall system throughput, and variability across
+simulation runs. Results highlight significant disparities in waiting
+times and workload distribution, revealing potential bottlenecks at
+slower counters despite policies encouraging customers to join the
+shortest queue. The analysis further underscores how variability in
+service rates and customer routing strategies impact the system's
+ability to maintain efficient flow, especially under heavy demand
+scenarios.
+
+In addition, the study demonstrates the critical role of queueing theory
+principles in informing system design, particularly emphasizing that
+total cashier service capacity must exceed customer arrival rates by a
+sufficient margin to prevent unbounded queue growth and ensure system
+stability. The simulation results expose the limitations of the current
+parameter settings, wherein high arrival rates relative to service
+capacity lead to unrealistic waiting times, reflecting an overloaded
+system rather than a stable operational environment.
+
+Finally, the report offers practical recommendations for supermarket
+management to enhance checkout performance, including the redistribution
+of customers to faster counters through improved guidance,
+cross-training staff to elevate slower checkout speeds, and
+consideration of dynamic queue management solutions. This simulation
+model thus provides a valuable, quantitative decision-support tool that
+can be adapted to test alternative policies and improve real-world
+supermarket operations.
+
+\newpage
+    \centering
+
+\section{Introduction}\label{introduction}
+
+\justifying
+
+Efficient management of customer flow and optimal allocation of
+resources are central challenges for modern supermarkets, which must
+balance service quality with operational effectiveness in a highly
+competitive retail environment. As customer expectations rise for fast
+and convenient service, supermarkets face increasing pressure to
+minimize checkout waiting times and prevent congestion, all while
+maintaining cost-effective staffing levels and resource utilization. The
+performance of checkout systems directly influences customer
+satisfaction, staff workload, and ultimately the store's financial
+outcomes.
+
+In practice, the nature of customer arrivals, their shopping behaviors,
+and the variability in checkout service speeds introduce significant
+complexity into system planning and staff scheduling. Customers
+typically arrive in an unpredictable manner, linger in the store for
+variable durations, and then select a checkout counter---often based on
+observations of queue length or speed. These interactions can produce
+unintended consequences, such as unbalanced queues, underutilized
+cashiers at faster counters, and the emergence of bottlenecks at slower
+stations. The policy of directing customers to the shortest line, while
+intuitive, does not always guarantee the most efficient overall
+operation; subtle dynamics in service variability and customer behavior
+can amplify system inefficiencies under real-world workloads.
+
+To address these issues, this report develops a detailed discrete-event
+simulation model of a supermarket equipped with four distinct checkout
+counters, each characterized by unique service rate profiles. The
+simulation incorporates stochastic customer arrivals, log-normally
+distributed shopping times, and operational policies reflective of
+common supermarket practices, such as shortest-queue selection. Through
+thirty independent simulation replications, the study seeks to provide a
+robust statistical picture of the system's performance, focusing on
+metrics such as average waiting times per counter, cashier utilization
+rates, total throughput, and the degree of run-to-run variability.
+
+A key aim of this work is to identify where bottlenecks and
+inefficiencies are most likely to arise, quantify their operational
+impact, and assess the conditions under which the system operates stably
+or becomes overloaded. Drawing on principles from queueing theory, the
+analysis interprets simulation outcomes in terms of the underlying
+balance between arrival and service rates, offering insights into the
+design of more resilient and efficient supermarket operations. Such a
+simulation-based approach not only helps diagnose current performance
+but also serves as a flexible framework for evaluating alternative
+staffing schedules, customer-routing policies, or automation
+investments, making it a valuable tool for both researchers and
+practitioners seeking data-driven guidance for supermarket management.
+
+\newpage
+    \centering
+
+\section{Methodology}\label{methodology}
+
+\justifying
+
+\subsection{System Description}\label{system-description}
+
+The simulation models a supermarket operating from 8:00 AM to 9:00 PM
+(780 minutes), with four distinct checkout counters. Customer arrivals
+follow a Poisson process with rate \(\lambda = 5\) customers per minute.
+Each customer shops for a log-normally distributed time, then joins the
+shortest available queue. The four counters differ in service rate,
+modeled as an exponential process with rates \(\mu_1 = 1/2.5\),
+\(\mu_2 = 1/3\), \(\mu_3 = 1/3.5\), and \(\mu_4 = 1/4\) (customers per
+minute).
+
+\subsection{Simulation Events and
+Logic}\label{simulation-events-and-logic}
+
+The key simulated events are customer arrivals, shopping completions,
+and service completions. The system state and event list are updated at
+each event, processing each customer through arrival, shopping, queuing,
+and service events. The model is implemented in R, and each run tracks
+individual customer histories.
+
+\subsection{Simulation Procedure}\label{simulation-procedure}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  \textbf{Initialization:}\\
+  The simulation starts with an empty system and the event list
+  initialized with the first customer arrival, which is randomly
+  generated according to the exponential inter-arrival time consistent
+  with the Poisson process. The supermarket operating hours are defined
+  from opening to closing times (780 minutes total).
+\item
+  \textbf{Customer Arrival Process:}\\
+  Customer arrivals are modeled as a Poisson process with constant rate
+  \(\lambda = 5\) per minute. The time between arrivals is exponentially
+  distributed; the next arrival event is scheduled accordingly until the
+  closing time is reached. Each arriving customer is assigned a unique
+  ID and a record entry is created to track their journey.
+\item
+  \textbf{Shopping Process:}\\
+  Upon arrival, each customer spends a random amount of time shopping,
+  modeled as a log-normal distribution (reflecting typical variability
+  in shopping durations). The shopping completion event is scheduled
+  relative to the arrival time plus the drawn shopping duration.
+\item
+  \textbf{Queue Selection and Joining:}\\
+  Once shopping is complete, the customer selects the checkout counter
+  with the shortest current queue. This selection rule assumes customers
+  have complete knowledge of all queue lengths at the time of shopping
+  completion. The customer joins the chosen queue and awaits service.
+\item
+  \textbf{Checkout Service Process:}\\
+  Each checkout counter serves customers on a first-in, first-out basis.
+  Service times at the counters are modeled as exponentially distributed
+  with rates \(\mu_i\) specific to each cashier, simulating differences
+  in speed/effectiveness. If the cashier is free when a customer arrives
+  to queue, service begins immediately; otherwise, the customer waits.
+\item
+  \textbf{Event Handling and Simulation Clock Advancement:}\\
+  The simulation advances by processing the earliest scheduled event
+  from the event list. Possible event types are arrival, shopping
+  completion, and service completion. The event list is updated
+  dynamically as new events (such as the next arrival or service
+  completions) are scheduled. After each event, the system
+  state---queues, cashier status, and customer data---is updated
+  accordingly.
+\item
+  \textbf{Performance Tracking:}\\
+  For each customer, arrival, shopping end, service start, and service
+  end times are recorded. Key performance indicators (KPIs) including
+  average waiting times per counter, cashier utilization, average total
+  system time per customer, and total customers served are computed from
+  collected data at the end of each simulation run.
+\item
+  \textbf{Replication and Statistical Analysis:}\\
+  The simulation is repeated for multiple independent replications (30
+  runs) to account for stochastic variability. Summary statistics such
+  as means, standard deviations, and confidence intervals of KPIs are
+  calculated to assess system performance robustness and variation.
+\item
+  \textbf{Assumptions and Limitations:}\\
+  All customers are assumed to join the shortest queue at the moment
+  shopping is complete, without balking or reneging. Service and arrival
+  processes are memoryless and independent. The model does not consider
+  special customer behaviors (e.g., priority queues) or detailed
+  staffing breaks.
+\end{enumerate}
+
+This procedure ensures a comprehensive, data-driven evaluation of
+supermarket checkout system performance reflecting realistic customer
+and service variability.
+
+\newpage
+\centering
+
+\section{Simulation Implementation}\label{simulation-implementation}
+
+\justifying
+
+The key functions below implement the event-driven simulation. Each run
+generates individual customer event histories. For clarity, only
+essential code is shown; see Appendix for full source.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# {-}{-}{-} Parameters {-}{-}{-}}
+\NormalTok{lambda\_arrival }\OtherTok{\textless{}{-}} \DecValTok{5} 
+\NormalTok{log\_mu\_shopping }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{log\_sigma\_shopping }\OtherTok{\textless{}{-}} \FloatTok{0.5}
+\NormalTok{service\_rates }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\FloatTok{2.5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{3}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\FloatTok{3.5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{) }
+\NormalTok{num\_counters }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(service\_rates)}
+\NormalTok{opening\_time }\OtherTok{\textless{}{-}} \DecValTok{8} \SpecialCharTok{*} \DecValTok{60} 
+\NormalTok{closing\_time }\OtherTok{\textless{}{-}} \DecValTok{21} \SpecialCharTok{*} \DecValTok{60} 
+\NormalTok{simulation\_duration }\OtherTok{\textless{}{-}}\NormalTok{ closing\_time }\SpecialCharTok{{-}}\NormalTok{ opening\_time }
+
+\CommentTok{\# {-}{-}{-} Event Types {-}{-}{-}}
+\NormalTok{EVENT\_ARRIVAL }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{EVENT\_SHOPPING\_COMPLETE }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{EVENT\_SERVICE\_COMPLETE }\OtherTok{\textless{}{-}} \DecValTok{3}
+
+\CommentTok{\# {-}{-}{-} Simulation Functions {-}{-}{-}}
+
+\CommentTok{\# Function to add an event to the FEL}
+\NormalTok{add\_event }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(time, type, }\AttributeTok{customer\_id =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{counter\_id =} \ConstantTok{NA}\NormalTok{) \{}
+\NormalTok{  new\_event }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{time =}\NormalTok{ time, }\AttributeTok{type =}\NormalTok{ type, }
+                          \AttributeTok{customer\_id =}\NormalTok{ customer\_id, }\AttributeTok{counter\_id =}\NormalTok{ counter\_id, }
+                          \AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{  event\_list }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{rbind}\NormalTok{(event\_list, new\_event)}
+\NormalTok{  event\_list }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ event\_list[}\FunctionTok{order}\NormalTok{(event\_list}\SpecialCharTok{$}\NormalTok{time), ] }
+\NormalTok{\}}
+
+\CommentTok{\# Initialize simulation}
+\NormalTok{initialize\_simulation }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+\NormalTok{  current\_time }\OtherTok{\textless{}\textless{}{-}} \DecValTok{0}
+\NormalTok{  next\_customer\_id }\OtherTok{\textless{}\textless{}{-}} \DecValTok{1}
+\NormalTok{  checkout\_queues }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{replicate}\NormalTok{(num\_counters, }\FunctionTok{list}\NormalTok{())}
+\NormalTok{  cashier\_status }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\ConstantTok{FALSE}\NormalTok{, num\_counters)}
+\NormalTok{  customer\_data }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+\NormalTok{  event\_list }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{time =} \FunctionTok{numeric}\NormalTok{(), }\AttributeTok{type =} \FunctionTok{integer}\NormalTok{(), }
+                           \AttributeTok{customer\_id =} \FunctionTok{integer}\NormalTok{(), }\AttributeTok{counter\_id =} \FunctionTok{integer}\NormalTok{())}
+\NormalTok{  first\_arrival\_time }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ lambda\_arrival)}
+  \FunctionTok{add\_event}\NormalTok{(first\_arrival\_time, EVENT\_ARRIVAL, next\_customer\_id)}
+\NormalTok{\}}
+
+\CommentTok{\# Handle Customer Arrival}
+\NormalTok{handle\_arrival }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(customer\_id) \{}
+  \CommentTok{\# Record arrival time}
+\NormalTok{  customer\_data[[}\FunctionTok{as.character}\NormalTok{(customer\_id)]] }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+    \AttributeTok{arrival\_time =}\NormalTok{ current\_time}
+\NormalTok{  )}
+\NormalTok{  shopping\_time }\OtherTok{\textless{}{-}} \FunctionTok{rlnorm}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{meanlog =}\NormalTok{ log\_mu\_shopping, }\AttributeTok{sdlog =}\NormalTok{ log\_sigma\_shopping)}
+\NormalTok{  shopping\_complete\_time }\OtherTok{\textless{}{-}}\NormalTok{ current\_time }\SpecialCharTok{+}\NormalTok{ shopping\_time}
+  \FunctionTok{add\_event}\NormalTok{(shopping\_complete\_time, EVENT\_SHOPPING\_COMPLETE, customer\_id)}
+\NormalTok{  next\_arrival\_time }\OtherTok{\textless{}{-}}\NormalTok{ current\_time }\SpecialCharTok{+} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ lambda\_arrival)}
+  \ControlFlowTok{if}\NormalTok{ (next\_arrival\_time }\SpecialCharTok{\textless{}=}\NormalTok{ simulation\_duration) \{}
+    \FunctionTok{add\_event}\NormalTok{(next\_arrival\_time, EVENT\_ARRIVAL, next\_customer\_id)}
+\NormalTok{    next\_customer\_id }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ next\_customer\_id }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# Handle Shopping Completion}
+\NormalTok{handle\_shopping\_complete }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(customer\_id) \{}
+\NormalTok{  customer\_data[[}\FunctionTok{as.character}\NormalTok{(customer\_id)]]}\SpecialCharTok{$}\NormalTok{shopping\_complete\_time }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ current\_time}
+\NormalTok{  queue\_lengths }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(checkout\_queues, length)}
+\NormalTok{  shortest\_queue\_idx }\OtherTok{\textless{}{-}} \FunctionTok{which.min}\NormalTok{(queue\_lengths)}
+\NormalTok{  checkout\_queues[[shortest\_queue\_idx]] }\OtherTok{\textless{}\textless{}{-}} 
+    \FunctionTok{c}\NormalTok{(checkout\_queues[[shortest\_queue\_idx]], customer\_id)}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{cashier\_status[shortest\_queue\_idx]) \{}
+    \FunctionTok{start\_service}\NormalTok{(shortest\_queue\_idx)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# Start Service at a Counter}
+\NormalTok{start\_service }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(counter\_id) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(checkout\_queues[[counter\_id]]) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{    customer\_to\_serve }\OtherTok{\textless{}{-}}\NormalTok{ checkout\_queues[[counter\_id]][[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{    checkout\_queues[[counter\_id]] }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ checkout\_queues[[counter\_id]][}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{] }
+\NormalTok{    cashier\_status[counter\_id] }\OtherTok{\textless{}\textless{}{-}} \ConstantTok{TRUE}
+\NormalTok{    customer\_data[[as.character}
+\NormalTok{                   (customer\_to\_serve)]]}\SpecialCharTok{$}\NormalTok{checkout\_start\_time }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ current\_time}
+\NormalTok{    customer\_data[[as.character}
+\NormalTok{                   (customer\_to\_serve)]]}\SpecialCharTok{$}\NormalTok{assigned\_counter\_id }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ counter\_id}
+\NormalTok{    service\_time }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ service\_rates[counter\_id])}
+\NormalTok{    service\_complete\_time }\OtherTok{\textless{}{-}}\NormalTok{ current\_time }\SpecialCharTok{+}\NormalTok{ service\_time}
+    \FunctionTok{add\_event}\NormalTok{(service\_complete\_time, EVENT\_SERVICE\_COMPLETE, }
+\NormalTok{              customer\_to\_serve, counter\_id)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# Handle Service Completion}
+\NormalTok{handle\_service\_complete }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(customer\_id, counter\_id) \{}
+\NormalTok{  customer\_data[[}\FunctionTok{as.character}\NormalTok{(customer\_id)]]}\SpecialCharTok{$}\NormalTok{checkout\_end\_time }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ current\_time}
+\NormalTok{  cashier\_status[counter\_id] }\OtherTok{\textless{}\textless{}{-}} \ConstantTok{FALSE}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(checkout\_queues[[counter\_id]]) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+    \FunctionTok{start\_service}\NormalTok{(counter\_id)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# {-}{-}{-} Main Simulation Loop {-}{-}{-}}
+\NormalTok{run\_simulation }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+  \FunctionTok{initialize\_simulation}\NormalTok{()}
+  
+  \ControlFlowTok{while}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(event\_list) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{    next\_event }\OtherTok{\textless{}{-}}\NormalTok{ event\_list[}\DecValTok{1}\NormalTok{, ]}
+\NormalTok{    current\_time }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ next\_event}\SpecialCharTok{$}\NormalTok{time}
+\NormalTok{    event\_list }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ event\_list[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, ] }
+    
+    \ControlFlowTok{if}\NormalTok{ (current\_time }\SpecialCharTok{\textgreater{}}\NormalTok{ closing\_time }\SpecialCharTok{\&\&}\NormalTok{ next\_event}\SpecialCharTok{$}\NormalTok{type }\SpecialCharTok{==}\NormalTok{ EVENT\_ARRIVAL) \{}
+      \ControlFlowTok{next}
+\NormalTok{    \}}
+    
+    \ControlFlowTok{switch}\NormalTok{(next\_event}\SpecialCharTok{$}\NormalTok{type,}
+           \AttributeTok{EVENT\_ARRIVAL =} \FunctionTok{handle\_arrival}\NormalTok{(next\_event}\SpecialCharTok{$}\NormalTok{customer\_id),}
+           \AttributeTok{EVENT\_SHOPPING\_COMPLETE =} \FunctionTok{handle\_shopping\_complete}\NormalTok{(next\_event}\SpecialCharTok{$}\NormalTok{customer\_id),}
+           \AttributeTok{EVENT\_SERVICE\_COMPLETE =} \FunctionTok{handle\_service\_complete}\NormalTok{(next\_event}\SpecialCharTok{$}\NormalTok{customer\_id, }
+\NormalTok{                                                            next\_event}\SpecialCharTok{$}\NormalTok{counter\_id)}
+\NormalTok{    )}
+\NormalTok{  \}}
+  
+  \FunctionTok{return}\NormalTok{(customer\_data)}
+\NormalTok{\}}
+
+\CommentTok{\# {-}{-}{-} KPI Calculation Functions {-}{-}{-}}
+
+\NormalTok{calculate\_kpis }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(customer\_data, service\_rates, simulation\_duration) \{}
+\NormalTok{  customer\_df }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, }\FunctionTok{lapply}\NormalTok{(customer\_data, }\ControlFlowTok{function}\NormalTok{(x) \{}
+    \FunctionTok{as.data.frame}\NormalTok{(x, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{  \}))}
+\NormalTok{  required\_cols }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"arrival\_time"}\NormalTok{, }\StringTok{"shopping\_complete\_time"}\NormalTok{, }
+                     \StringTok{"checkout\_start\_time"}\NormalTok{, }\StringTok{"checkout\_end\_time"}\NormalTok{, }\StringTok{"assigned\_counter\_id"}\NormalTok{)}
+  \ControlFlowTok{for}\NormalTok{ (col }\ControlFlowTok{in}\NormalTok{ required\_cols) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{(col }\SpecialCharTok{\%in\%} \FunctionTok{colnames}\NormalTok{(customer\_df))) \{}
+\NormalTok{      customer\_df[[col]] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
+\NormalTok{    \}}
+\NormalTok{  \}}
+\NormalTok{  customer\_df }\OtherTok{\textless{}{-}}\NormalTok{ customer\_df[}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(customer\_df}\SpecialCharTok{$}\NormalTok{checkout\_end\_time), ]}
+\NormalTok{  customer\_df}\SpecialCharTok{$}\NormalTok{waiting\_time }\OtherTok{\textless{}{-}}\NormalTok{ customer\_df}\SpecialCharTok{$}\NormalTok{checkout\_start\_time }\SpecialCharTok{{-}} 
+\NormalTok{                              customer\_df}\SpecialCharTok{$}\NormalTok{shopping\_complete\_time}
+\NormalTok{  avg\_waiting\_time\_per\_counter }\OtherTok{\textless{}{-}} \FunctionTok{tapply}\NormalTok{(customer\_df}\SpecialCharTok{$}\NormalTok{waiting\_time, }
+\NormalTok{                                         customer\_df}\SpecialCharTok{$}\NormalTok{assigned\_counter\_id, }
+\NormalTok{                                         mean, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  customer\_df}\SpecialCharTok{$}\NormalTok{total\_time\_in\_supermarket }\OtherTok{\textless{}{-}}\NormalTok{ customer\_df}\SpecialCharTok{$}\NormalTok{checkout\_end\_time }\SpecialCharTok{{-}} 
+\NormalTok{                                            customer\_df}\SpecialCharTok{$}\NormalTok{arrival\_time}
+\NormalTok{  avg\_total\_time\_in\_supermarket }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(customer\_df}\SpecialCharTok{$}\NormalTok{total\_time\_in\_supermarket, }
+                                        \AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+\NormalTok{  busy\_time\_per\_counter }\OtherTok{\textless{}{-}} \FunctionTok{tapply}\NormalTok{(customer\_df}\SpecialCharTok{$}\NormalTok{checkout\_end\_time }\SpecialCharTok{{-}} 
+\NormalTok{                                  customer\_df}\SpecialCharTok{$}\NormalTok{checkout\_start\_time, }
+\NormalTok{                                  customer\_df}\SpecialCharTok{$}\NormalTok{assigned\_counter\_id, sum, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+  
+\NormalTok{  cashier\_utilization }\OtherTok{\textless{}{-}}\NormalTok{ busy\_time\_per\_counter }\SpecialCharTok{/}\NormalTok{ simulation\_duration}
+  \FunctionTok{names}\NormalTok{(cashier\_utilization) }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Counter\_"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(service\_rates))}
+\NormalTok{  total\_customers\_served }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(customer\_df)}
+  
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}
+    \AttributeTok{avg\_waiting\_time\_per\_counter =}\NormalTok{ avg\_waiting\_time\_per\_counter,}
+    \AttributeTok{avg\_total\_time\_in\_supermarket =}\NormalTok{ avg\_total\_time\_in\_supermarket,}
+    \AttributeTok{cashier\_utilization =}\NormalTok{ cashier\_utilization,}
+    \AttributeTok{total\_customers\_served =}\NormalTok{ total\_customers\_served}
+\NormalTok{  ))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+\centering
+
+\section{Simulation Experiments}\label{simulation-experiments}
+
+\justifying
+
+We run the simulation \textbf{30 times} to gather reliable statistics.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{num\_simulations }\OtherTok{\textless{}{-}} \DecValTok{30}
+\NormalTok{all\_kpis }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"list"}\NormalTok{, num\_simulations)}
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_simulations) \{}
+\NormalTok{results }\OtherTok{\textless{}{-}} \FunctionTok{run\_simulation}\NormalTok{()}
+\NormalTok{kpis }\OtherTok{\textless{}{-}} \FunctionTok{calculate\_kpis}\NormalTok{(results, service\_rates, simulation\_duration)}
+\NormalTok{all\_kpis[[i]] }\OtherTok{\textless{}{-}}\NormalTok{ kpis}
+\NormalTok{\}}
+
+
+\NormalTok{wait\_mat }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, }\FunctionTok{lapply}\NormalTok{(all\_kpis, }
+                                  \ControlFlowTok{function}\NormalTok{(k) }\FunctionTok{as.numeric}\NormalTok{(k}\SpecialCharTok{$}\NormalTok{avg\_waiting\_time\_per\_counter)))}
+\FunctionTok{colnames}\NormalTok{(wait\_mat) }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Counter\_"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_counters)}
+\NormalTok{util\_mat }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, }\FunctionTok{lapply}\NormalTok{(all\_kpis, }\ControlFlowTok{function}\NormalTok{(k) }\FunctionTok{as.numeric}\NormalTok{(k}\SpecialCharTok{$}\NormalTok{cashier\_utilization)))}
+\FunctionTok{colnames}\NormalTok{(util\_mat) }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Counter\_"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_counters)}
+\NormalTok{avg\_total\_time }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(all\_kpis, }\ControlFlowTok{function}\NormalTok{(k) k}\SpecialCharTok{$}\NormalTok{avg\_total\_time\_in\_supermarket)}
+\NormalTok{n\_served }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(all\_kpis, }\ControlFlowTok{function}\NormalTok{(k) k}\SpecialCharTok{$}\NormalTok{total\_customers\_served)}
+\end{Highlighting}
+\end{Shaded}
+
+\newpage
+\centering
+
+\section{Results}\label{results}
+
+\justifying
+
+\subsection{Average Waiting Time per
+Counter}\label{average-waiting-time-per-counter}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{wait\_mean }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(wait\_mat)}
+\NormalTok{wait\_sd }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(wait\_mat, }\DecValTok{2}\NormalTok{, sd)}
+\NormalTok{wait\_table }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+\AttributeTok{Counter =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Counter "}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_counters),}
+\AttributeTok{Mean\_Waiting\_Time =} \FunctionTok{round}\NormalTok{(wait\_mean, }\DecValTok{2}\NormalTok{),}
+\AttributeTok{SD\_Waiting\_Time =} \FunctionTok{round}\NormalTok{(wait\_sd, }\DecValTok{2}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(wait\_table, }\AttributeTok{caption =} \StringTok{"Average Waiting Time per Counter (minutes)"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llrr@{}}
+\caption{Average Waiting Time per Counter (minutes)}\tabularnewline
+\toprule\noalign{}
+& Counter & Mean\_Waiting\_Time & SD\_Waiting\_Time \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Counter & Mean\_Waiting\_Time & SD\_Waiting\_Time \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Counter\_1 & Counter 1 & 907.44 & 42.68 \\
+Counter\_2 & Counter 2 & 1098.81 & 40.33 \\
+Counter\_3 & Counter 3 & 1264.63 & 49.76 \\
+Counter\_4 & Counter 4 & 1444.10 & 50.90 \\
+\end{longtable}
+
+\subsection{Cashier Utilization per
+Counter}\label{cashier-utilization-per-counter}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{util\_mean }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(util\_mat)}
+\NormalTok{util\_sd }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(util\_mat, }\DecValTok{2}\NormalTok{, sd)}
+\NormalTok{util\_table }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+\AttributeTok{Counter =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Counter "}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_counters),}
+\AttributeTok{Mean\_Utilization =} \FunctionTok{round}\NormalTok{(util\_mean, }\DecValTok{3}\NormalTok{),}
+\AttributeTok{SD\_Utilization =} \FunctionTok{round}\NormalTok{(util\_sd, }\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(util\_table, }\AttributeTok{caption =} \StringTok{"Cashier Utilization per Counter"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}llrr@{}}
+\caption{Cashier Utilization per Counter}\tabularnewline
+\toprule\noalign{}
+& Counter & Mean\_Utilization & SD\_Utilization \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+& Counter & Mean\_Utilization & SD\_Utilization \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Counter\_1 & Counter 1 & 3.328 & 0.112 \\
+Counter\_2 & Counter 2 & 3.806 & 0.116 \\
+Counter\_3 & Counter 3 & 4.259 & 0.125 \\
+Counter\_4 & Counter 4 & 4.681 & 0.119 \\
+\end{longtable}
+
+\newpage
+\justifying
+
+\subsection{System-wide Key Performance
+Indicators}\label{system-wide-key-performance-indicators}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{avg\_time\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(avg\_total\_time)}
+\NormalTok{avg\_time\_sd }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(avg\_total\_time)}
+\NormalTok{served\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(n\_served)}
+\NormalTok{served\_sd }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(n\_served)}
+\NormalTok{summary\_table }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+\AttributeTok{KPI =} \FunctionTok{c}\NormalTok{(}\StringTok{"Average Total Time in Supermarket"}\NormalTok{, }\StringTok{"Total Customers Served"}\NormalTok{),}
+\AttributeTok{Mean =} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(avg\_time\_mean, }\DecValTok{2}\NormalTok{), }\FunctionTok{round}\NormalTok{(served\_mean, }\DecValTok{2}\NormalTok{)),}
+\AttributeTok{SD =} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(avg\_time\_sd, }\DecValTok{2}\NormalTok{), }\FunctionTok{round}\NormalTok{(served\_sd, }\DecValTok{2}\NormalTok{))}
+\NormalTok{)}
+\NormalTok{knitr}\SpecialCharTok{::}\FunctionTok{kable}\NormalTok{(summary\_table, }\AttributeTok{caption =} \StringTok{"System{-}wide Key Performance Indicators"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{longtable}[]{@{}lrr@{}}
+\caption{System-wide Key Performance Indicators}\tabularnewline
+\toprule\noalign{}
+KPI & Mean & SD \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+KPI & Mean & SD \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Average Total Time in Supermarket & 1174.28 & 34.97 \\
+Total Customers Served & 3872.37 & 75.09 \\
+\end{longtable}
+
+\newpage
+\centering
+
+\section{Visualizations}\label{visualizations}
+
+\justifying
+
+\subsection{Barplot: Average Waiting Time per
+Counter}\label{barplot-average-waiting-time-per-counter}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bar\_centers }\OtherTok{\textless{}{-}} \FunctionTok{barplot}\NormalTok{(}
+\NormalTok{wait\_mean,}
+\AttributeTok{names.arg =} \FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}Counter\textquotesingle{}}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_counters),}
+\AttributeTok{col =} \StringTok{\textquotesingle{}skyblue\textquotesingle{}}\NormalTok{,}
+\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FunctionTok{max}\NormalTok{(wait\_mean }\SpecialCharTok{+}\NormalTok{ wait\_sd)}\SpecialCharTok{*}\FloatTok{1.1}\NormalTok{),}
+\AttributeTok{ylab =} \StringTok{\textquotesingle{}Average Waiting Time (min)\textquotesingle{}}\NormalTok{,}
+\AttributeTok{main =} \StringTok{\textquotesingle{}Average Waiting Time per Counter\textquotesingle{}}
+\NormalTok{)}
+\FunctionTok{arrows}\NormalTok{(}
+\AttributeTok{x0 =}\NormalTok{ bar\_centers,}
+\AttributeTok{y0 =}\NormalTok{ wait\_mean }\SpecialCharTok{{-}}\NormalTok{ wait\_sd,}
+\AttributeTok{x1 =}\NormalTok{ bar\_centers,}
+\AttributeTok{y1 =}\NormalTok{ wait\_mean }\SpecialCharTok{+}\NormalTok{ wait\_sd,}
+\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{code =} \DecValTok{3}\NormalTok{, }\AttributeTok{length =} \FloatTok{0.05}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STA3113-Mini-Project-–-Supermarket-Simulation_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\newpage
+\justifying
+
+\subsection{Barplot: Cashier Utilization per
+Counter}\label{barplot-cashier-utilization-per-counter}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{bar\_centers2 }\OtherTok{\textless{}{-}} \FunctionTok{barplot}\NormalTok{(}
+\NormalTok{util\_mean,}
+\AttributeTok{names.arg =} \FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}Counter\textquotesingle{}}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_counters),}
+\AttributeTok{col =} \StringTok{\textquotesingle{}salmon\textquotesingle{}}\NormalTok{,}
+\AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FunctionTok{max}\NormalTok{(util\_mean }\SpecialCharTok{+}\NormalTok{ util\_sd)}\SpecialCharTok{*}\FloatTok{1.1}\NormalTok{),}
+\AttributeTok{ylab =} \StringTok{\textquotesingle{}Cashier Utilization\textquotesingle{}}\NormalTok{,}
+\AttributeTok{main =} \StringTok{\textquotesingle{}Cashier Utilization per Counter\textquotesingle{}}
+\NormalTok{)}
+\FunctionTok{arrows}\NormalTok{(}
+\AttributeTok{x0 =}\NormalTok{ bar\_centers2,}
+\AttributeTok{y0 =}\NormalTok{ util\_mean }\SpecialCharTok{{-}}\NormalTok{ util\_sd,}
+\AttributeTok{x1 =}\NormalTok{ bar\_centers2,}
+\AttributeTok{y1 =}\NormalTok{ util\_mean }\SpecialCharTok{+}\NormalTok{ util\_sd,}
+\AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{code =} \DecValTok{3}\NormalTok{, }\AttributeTok{length =} \FloatTok{0.05}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STA3113-Mini-Project-–-Supermarket-Simulation_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\newpage
+\justifying
+
+\subsection{Histogram: Average Total Time in
+Supermarket}\label{histogram-average-total-time-in-supermarket}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(avg\_total\_time,}
+\AttributeTok{breaks =} \DecValTok{10}\NormalTok{,}
+\AttributeTok{main =} \StringTok{"Average Total Time in Supermarket"}\NormalTok{,}
+\AttributeTok{xlab =} \StringTok{"Minutes"}\NormalTok{,}
+\AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{,}
+\AttributeTok{border =} \StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STA3113-Mini-Project-–-Supermarket-Simulation_files/figure-latex/unnamed-chunk-9-1.pdf}
+
+\newpage
+\justifying
+
+\subsection{Histogram: Total Customers Served Per
+Day}\label{histogram-total-customers-served-per-day}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(n\_served,}
+\AttributeTok{breaks =} \DecValTok{10}\NormalTok{,}
+\AttributeTok{main =} \StringTok{"Total Customers Served Per Day"}\NormalTok{,}
+\AttributeTok{xlab =} \StringTok{"Customers"}\NormalTok{,}
+\AttributeTok{col =} \StringTok{"lightgreen"}\NormalTok{,}
+\AttributeTok{border =} \StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{STA3113-Mini-Project-–-Supermarket-Simulation_files/figure-latex/unnamed-chunk-10-1.pdf}
+
+\newpage
+\centering
+
+\section{Interpretation and
+Discussion}\label{interpretation-and-discussion}
+
+\justifying
+
+\subsection{Analysis of Simulation
+Results}\label{analysis-of-simulation-results}
+
+\subsubsection{Waiting Times}\label{waiting-times}
+
+The mean waiting times (\textbf{Counter 1:} \textasciitilde901 min,
+\textbf{Counter 4:} \textasciitilde1453 min) clearly increase from
+quicker to slower cashiers. This reflects the variation in cashier
+service rates and the store policy of joining the shortest line, which
+does not always guarantee the shortest wait for customers.
+
+\textbf{Managerial implication:}\\
+If more resources are added to speedier counters, they may remain
+underutilized unless customers are guided to use them; in contrast,
+slower counters risk persistent bottlenecks.
+
+\subsubsection{Cashier Utilization}\label{cashier-utilization}
+
+Cashier 4 has the highest utilization (\textasciitilde4.74 average) and
+Counter 1 the lowest (\textasciitilde3.31). This suggests the
+possibility of bottlenecks and long queues at slower counters, fatigue
+risks for overworked cashiers, and underutilization of the fastest
+counters.
+
+\subsubsection{Throughput and Total System
+Time}\label{throughput-and-total-system-time}
+
+The average total time in the supermarket (\textasciitilde1174 min) and
+the number of customers served per day (\textasciitilde3894) show the
+system handling high demand but at the cost of long delays at slower
+counters.
+
+\subsubsection{Variability}\label{variability}
+
+Moderate standard deviations indicate some run-to-run variability, but
+overall results are stable. This supports the robustness of the
+simulation for performance analysis.
+
+\subsubsection{Visualizations}\label{visualizations-1}
+
+Bar plots and histograms confirm these findings, showing significant
+differences in both means and variability across counters and simulation
+runs.
+
+\subsubsection{Recommendations}\label{recommendations}
+
+\begin{itemize}
+\tightlist
+\item
+  Redistribute customers more efficiently (using signage or staff
+  guidance), or cross-train staff to improve service at slower counters.
+\item
+  Consider process changes, such as dynamic queue management, to reduce
+  bottlenecks.
+\end{itemize}
+
+\newpage
+\justifying
+
+\subsection{Model Limitations and Theoretical
+Implications}\label{model-limitations-and-theoretical-implications}
+
+The simulated average total time in the supermarket (\textasciitilde1170
+minutes) does not reflect realistic customer experience in actual
+supermarket operations. This outcome is directly linked to the high
+customer arrival rate (5 customers per minute, or approximately 3900 per
+day) being nearly equal to the maximum service capacity provided by all
+cashiers operating without interruption.
+
+Queueing theory establishes that for stable and manageable system
+performance, total cashier service capacity \(\sum\mu\) should exceed
+the average arrival rate \(\lambda\) by a comfortable margin. When this
+condition is not satisfied, as in the current parameterization, queue
+lengths and customer waiting times increase indefinitely over time,
+which aligns with the patterns observed in these simulation results.
+
+\begin{quote}
+``As the arrival rate \(\lambda\) approaches or exceeds the service rate
+\(\mu\), all metrics---queue length, wait time, and system time---grow
+explosively and the system does not stabilize.''
+
+``A queue forms whenever current demand exceeds the existing capacity to
+serve. This occurs when the checkout operation unit is too busy to serve
+the arriving customers immediately.''
+
+``\ldots There must exist a balance between the service rate and
+inter-arrival times in order to permit the system operates in steady
+condition\ldots{}''
+\end{quote}
+
+These effects are an expected result of the mandated model parameters
+for this assignment. In contemporary supermarket management, operational
+practice is to maintain server utilizations well below 100\% (typically
+60--80\%) and to adjust staffing levels or regulate entrance flow to
+sustain steady-state service and high customer satisfaction.
+
+\newpage
+\centering
+
+\section{Conclusion}\label{conclusion}
+
+\justifying
+
+The results of running the supermarket simulation for 30 independent
+replications indicate that overall system performance is highly
+sensitive to both cashier speed differences and the customer routing
+policy adopted. Substantial disparities in waiting times and workload
+across different counters highlight potential risks for customer
+dissatisfaction and employee strain. The simulation's consistent
+standard deviation in system time and throughput supports the
+reliability of the results.
+
+For operational improvement, management should focus on balancing line
+lengths, optimizing cashier allocation, and investing in training or
+automation for slower checkouts. The discrete-event simulation model
+presented here offers a quantitative and reproducible basis for
+evaluating supermarket performance and provides a flexible framework for
+exploring alternative operational policies.
+
+While the simulation logic and queueing models are appropriate, it
+should be recognized that the present parameter choices represent an
+overloaded system scenario. For results to closely reflect real-world
+supermarket operations, further calibration of arrival rates, cashier
+numbers, or the introduction of dynamic queue policies would be
+required, in accordance with established queueing theory and industry
+best practices. Nevertheless, the model logic and the observed
+performance patterns remain highly relevant and informative for decision
+support and operational planning.
+
+\newpage
+\centering
+
+\section{Appendix}\label{appendix}
+
+\justifying
+
+\subsection{Full Simulation Code}\label{full-simulation-code}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Supermarket Simulation {-} STA3113 Mini Project}
+
+\CommentTok{\# {-}{-}{-} Parameters {-}{-}{-}}
+\NormalTok{lambda\_arrival }\OtherTok{\textless{}{-}} \DecValTok{5} \CommentTok{\# customers per minute}
+\NormalTok{log\_mu\_shopping }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{log\_sigma\_shopping }\OtherTok{\textless{}{-}} \FloatTok{0.5}
+
+\NormalTok{service\_rates }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\FloatTok{2.5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{3}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\FloatTok{3.5}\NormalTok{, }\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{) }\CommentTok{\# mu\_i for each counter}
+\NormalTok{num\_counters }\OtherTok{\textless{}{-}} \FunctionTok{length}\NormalTok{(service\_rates)}
+
+\NormalTok{opening\_time }\OtherTok{\textless{}{-}} \DecValTok{8} \SpecialCharTok{*} \DecValTok{60} \CommentTok{\# 8:00 a.m. in minutes from midnight}
+\NormalTok{closing\_time }\OtherTok{\textless{}{-}} \DecValTok{21} \SpecialCharTok{*} \DecValTok{60} \CommentTok{\# 9:00 p.m. in minutes from midnight}
+\NormalTok{simulation\_duration }\OtherTok{\textless{}{-}}\NormalTok{ closing\_time }\SpecialCharTok{{-}}\NormalTok{ opening\_time }
+\CommentTok{\# Total simulation time in minutes}
+
+\CommentTok{\# {-}{-}{-} Event Types {-}{-}{-}}
+\NormalTok{EVENT\_ARRIVAL }\OtherTok{\textless{}{-}} \DecValTok{1}
+\NormalTok{EVENT\_SHOPPING\_COMPLETE }\OtherTok{\textless{}{-}} \DecValTok{2}
+\NormalTok{EVENT\_SERVICE\_COMPLETE }\OtherTok{\textless{}{-}} \DecValTok{3}
+
+\CommentTok{\# {-}{-}{-} Global Variables (System State) {-}{-}{-}}
+\NormalTok{current\_time }\OtherTok{\textless{}{-}} \DecValTok{0}
+\NormalTok{next\_customer\_id }\OtherTok{\textless{}{-}} \DecValTok{1}
+
+\CommentTok{\# Queues for each counter (list of customer IDs)}
+\NormalTok{checkout\_queues }\OtherTok{\textless{}{-}} \FunctionTok{replicate}\NormalTok{(num\_counters, }\FunctionTok{list}\NormalTok{())}
+
+\CommentTok{\# Status of cashiers (TRUE = busy, FALSE = idle)}
+\NormalTok{cashier\_status }\OtherTok{\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\ConstantTok{FALSE}\NormalTok{, num\_counters)}
+
+\CommentTok{\# Customer data storage (e.g., data.frame or list of lists)}
+\NormalTok{customer\_data }\OtherTok{\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+
+\CommentTok{\# {-}{-}{-} Event List (Future Event List {-} FEL) {-}{-}{-}}
+\CommentTok{\# Structure: data.frame(time, type, customer\_id, counter\_id)}
+\NormalTok{event\_list }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{time =} \FunctionTok{numeric}\NormalTok{(), }\AttributeTok{type =} \FunctionTok{integer}\NormalTok{(), }
+                         \AttributeTok{customer\_id =} \FunctionTok{integer}\NormalTok{(), }\AttributeTok{counter\_id =} \FunctionTok{integer}\NormalTok{())}
+
+\CommentTok{\# Function to add an event to the FEL}
+\NormalTok{add\_event }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(time, type, }\AttributeTok{customer\_id =} \ConstantTok{NA}\NormalTok{, }\AttributeTok{counter\_id =} \ConstantTok{NA}\NormalTok{) \{}
+\NormalTok{  new\_event }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{time =}\NormalTok{ time, }\AttributeTok{type =}\NormalTok{ type, }
+                          \AttributeTok{customer\_id =}\NormalTok{ customer\_id, }
+                          \AttributeTok{counter\_id =}\NormalTok{ counter\_id, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{  event\_list }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{rbind}\NormalTok{(event\_list, new\_event)}
+\NormalTok{  event\_list }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ event\_list[}\FunctionTok{order}\NormalTok{(event\_list}\SpecialCharTok{$}\NormalTok{time), ] }\CommentTok{\# Keep FEL sorted by time}
+\NormalTok{\}}
+
+\CommentTok{\# {-}{-}{-} Simulation Functions {-}{-}{-}}
+
+\CommentTok{\# Initialize simulation}
+\NormalTok{initialize\_simulation }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+\NormalTok{  current\_time }\OtherTok{\textless{}\textless{}{-}} \DecValTok{0}
+\NormalTok{  next\_customer\_id }\OtherTok{\textless{}\textless{}{-}} \DecValTok{1}
+\NormalTok{  checkout\_queues }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{replicate}\NormalTok{(num\_counters, }\FunctionTok{list}\NormalTok{())}
+\NormalTok{  cashier\_status }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{rep}\NormalTok{(}\ConstantTok{FALSE}\NormalTok{, num\_counters)}
+\NormalTok{  customer\_data }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{list}\NormalTok{()}
+\NormalTok{  event\_list }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}\AttributeTok{time =} \FunctionTok{numeric}\NormalTok{(), }\AttributeTok{type =} \FunctionTok{integer}\NormalTok{(), }
+                           \AttributeTok{customer\_id =} \FunctionTok{integer}\NormalTok{(), }\AttributeTok{counter\_id =} \FunctionTok{integer}\NormalTok{())}
+  
+  \CommentTok{\# Schedule first arrival event}
+\NormalTok{  first\_arrival\_time }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ lambda\_arrival)}
+  \FunctionTok{add\_event}\NormalTok{(first\_arrival\_time, EVENT\_ARRIVAL, next\_customer\_id)}
+\NormalTok{\}}
+
+\CommentTok{\# Handle Customer Arrival}
+\NormalTok{handle\_arrival }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(customer\_id) \{}
+  \CommentTok{\# Record arrival time}
+\NormalTok{  customer\_data[[}\FunctionTok{as.character}\NormalTok{(customer\_id)]] }\OtherTok{\textless{}\textless{}{-}} \FunctionTok{list}\NormalTok{(}
+    \AttributeTok{arrival\_time =}\NormalTok{ current\_time}
+\NormalTok{  )}
+  
+  \CommentTok{\# Schedule shopping completion}
+\NormalTok{  shopping\_time }\OtherTok{\textless{}{-}} \FunctionTok{rlnorm}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{meanlog =}\NormalTok{ log\_mu\_shopping, }
+                          \AttributeTok{sdlog =}\NormalTok{ log\_sigma\_shopping)}
+\NormalTok{  shopping\_complete\_time }\OtherTok{\textless{}{-}}\NormalTok{ current\_time }\SpecialCharTok{+}\NormalTok{ shopping\_time}
+  \FunctionTok{add\_event}\NormalTok{(shopping\_complete\_time, EVENT\_SHOPPING\_COMPLETE, customer\_id)}
+  
+  \CommentTok{\# Schedule next arrival if within operating hours}
+\NormalTok{  next\_arrival\_time }\OtherTok{\textless{}{-}}\NormalTok{ current\_time }\SpecialCharTok{+} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ lambda\_arrival)}
+  \ControlFlowTok{if}\NormalTok{ (next\_arrival\_time }\SpecialCharTok{\textless{}=}\NormalTok{ simulation\_duration) \{}
+    \FunctionTok{add\_event}\NormalTok{(next\_arrival\_time, EVENT\_ARRIVAL, next\_customer\_id)}
+\NormalTok{    next\_customer\_id }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ next\_customer\_id }\SpecialCharTok{+} \DecValTok{1}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# Handle Shopping Completion}
+\NormalTok{handle\_shopping\_complete }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(customer\_id) \{}
+\NormalTok{  customer\_data[[}\FunctionTok{as.character}\NormalTok{(customer\_id)]]}\SpecialCharTok{$}\NormalTok{shopping\_complete\_time }
+              \OtherTok{\textless{}\textless{}{-}}\NormalTok{ current\_time}
+  
+  \CommentTok{\# Find shortest queue}
+\NormalTok{  queue\_lengths }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(checkout\_queues, length)}
+\NormalTok{  shortest\_queue\_idx }\OtherTok{\textless{}{-}} \FunctionTok{which.min}\NormalTok{(queue\_lengths)}
+  
+  \CommentTok{\# Add customer to queue}
+\NormalTok{  checkout\_queues[[shortest\_queue\_idx]] }\OtherTok{\textless{}\textless{}{-}} 
+    \FunctionTok{c}\NormalTok{(checkout\_queues[[shortest\_queue\_idx]], customer\_id)}
+  
+  \CommentTok{\# If cashier is idle, start service}
+  \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{cashier\_status[shortest\_queue\_idx]) \{}
+    \FunctionTok{start\_service}\NormalTok{(shortest\_queue\_idx)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# Start Service at a Counter}
+\NormalTok{start\_service }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(counter\_id) \{}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(checkout\_queues[[counter\_id]]) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{    customer\_to\_serve }\OtherTok{\textless{}{-}}\NormalTok{ checkout\_queues[[counter\_id]][[}\DecValTok{1}\NormalTok{]]}
+\NormalTok{    checkout\_queues[[counter\_id]] }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ checkout\_queues[[counter\_id]][}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{] }
+    \CommentTok{\# Remove from queue}
+    
+\NormalTok{    cashier\_status[counter\_id] }\OtherTok{\textless{}\textless{}{-}} \ConstantTok{TRUE}
+\NormalTok{    customer\_data[[}\FunctionTok{as.character}\NormalTok{(customer\_to\_serve)]]}\SpecialCharTok{$}\NormalTok{checkout\_start\_time }
+                    \OtherTok{\textless{}\textless{}{-}}\NormalTok{ current\_time}
+\NormalTok{    customer\_data[[}\FunctionTok{as.character}\NormalTok{(customer\_to\_serve)]]}\SpecialCharTok{$}\NormalTok{assigned\_counter\_id }
+                    \OtherTok{\textless{}\textless{}{-}}\NormalTok{ counter\_id}
+    
+\NormalTok{    service\_time }\OtherTok{\textless{}{-}} \FunctionTok{rexp}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{rate =}\NormalTok{ service\_rates[counter\_id])}
+\NormalTok{    service\_complete\_time }\OtherTok{\textless{}{-}}\NormalTok{ current\_time }\SpecialCharTok{+}\NormalTok{ service\_time}
+    \FunctionTok{add\_event}\NormalTok{(service\_complete\_time, EVENT\_SERVICE\_COMPLETE, }
+\NormalTok{              customer\_to\_serve, counter\_id)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# Handle Service Completion}
+\NormalTok{handle\_service\_complete }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(customer\_id, counter\_id) \{}
+\NormalTok{  customer\_data[[}\FunctionTok{as.character}\NormalTok{(customer\_id)]]}\SpecialCharTok{$}\NormalTok{checkout\_end\_time }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ current\_time}
+\NormalTok{  cashier\_status[counter\_id] }\OtherTok{\textless{}\textless{}{-}} \ConstantTok{FALSE}
+  
+  \CommentTok{\# If there are more customers in queue, start next service}
+  \ControlFlowTok{if}\NormalTok{ (}\FunctionTok{length}\NormalTok{(checkout\_queues[[counter\_id]]) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+    \FunctionTok{start\_service}\NormalTok{(counter\_id)}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\CommentTok{\# {-}{-}{-} Main Simulation Loop {-}{-}{-}}
+\NormalTok{run\_simulation }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{() \{}
+  \FunctionTok{initialize\_simulation}\NormalTok{()}
+  
+  \ControlFlowTok{while}\NormalTok{ (}\FunctionTok{nrow}\NormalTok{(event\_list) }\SpecialCharTok{\textgreater{}} \DecValTok{0}\NormalTok{) \{}
+\NormalTok{    next\_event }\OtherTok{\textless{}{-}}\NormalTok{ event\_list[}\DecValTok{1}\NormalTok{, ]}
+\NormalTok{    current\_time }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ next\_event}\SpecialCharTok{$}\NormalTok{time}
+\NormalTok{    event\_list }\OtherTok{\textless{}\textless{}{-}}\NormalTok{ event\_list[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{, ] }\CommentTok{\# Remove event from FEL}
+    
+    \ControlFlowTok{if}\NormalTok{ (current\_time }\SpecialCharTok{\textgreater{}}\NormalTok{ closing\_time }\SpecialCharTok{\&\&}\NormalTok{ next\_event}\SpecialCharTok{$}\NormalTok{type }\SpecialCharTok{==}\NormalTok{ EVENT\_ARRIVAL) \{}
+      \CommentTok{\# Stop scheduling new arrivals after closing time}
+      \ControlFlowTok{next}
+\NormalTok{    \}}
+    
+    \ControlFlowTok{switch}\NormalTok{(next\_event}\SpecialCharTok{$}\NormalTok{type,}
+           \AttributeTok{EVENT\_ARRIVAL =} \FunctionTok{handle\_arrival}\NormalTok{(next\_event}\SpecialCharTok{$}\NormalTok{customer\_id),}
+           \AttributeTok{EVENT\_SHOPPING\_COMPLETE =}\NormalTok{ handle\_shopping\_complete}
+\NormalTok{                                      (next\_event}\SpecialCharTok{$}\NormalTok{customer\_id),}
+           \AttributeTok{EVENT\_SERVICE\_COMPLETE =}\NormalTok{ handle\_service\_complete}
+\NormalTok{           (next\_event}\SpecialCharTok{$}\NormalTok{customer\_id, next\_event}\SpecialCharTok{$}\NormalTok{counter\_id)}
+\NormalTok{    )}
+\NormalTok{  \}}
+  
+  \FunctionTok{return}\NormalTok{(customer\_data)}
+\NormalTok{\}}
+
+
+\CommentTok{\# {-}{-}{-} KPI Calculation Functions {-}{-}{-}}
+
+\NormalTok{calculate\_kpis }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{(customer\_data, service\_rates, simulation\_duration) \{}
+  
+  \CommentTok{\# Convert customer\_data list to a data frame for easier processing}
+\NormalTok{  customer\_df }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, }\FunctionTok{lapply}\NormalTok{(customer\_data, }\ControlFlowTok{function}\NormalTok{(x) \{}
+    \FunctionTok{as.data.frame}\NormalTok{(x, }\AttributeTok{stringsAsFactors =} \ConstantTok{FALSE}\NormalTok{)}
+\NormalTok{  \}))}
+  
+  \CommentTok{\# Ensure all necessary columns exist, fill with NA if not}
+\NormalTok{  required\_cols }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"arrival\_time"}\NormalTok{, }\StringTok{"shopping\_complete\_time"}\NormalTok{, }
+                     \StringTok{"checkout\_start\_time"}\NormalTok{, }\StringTok{"checkout\_end\_time"}\NormalTok{, }
+                     \StringTok{"assigned\_counter\_id"}\NormalTok{)}
+  \ControlFlowTok{for}\NormalTok{ (col }\ControlFlowTok{in}\NormalTok{ required\_cols) \{}
+    \ControlFlowTok{if}\NormalTok{ (}\SpecialCharTok{!}\NormalTok{(col }\SpecialCharTok{\%in\%} \FunctionTok{colnames}\NormalTok{(customer\_df))) \{}
+\NormalTok{      customer\_df[[col]] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
+\NormalTok{    \}}
+\NormalTok{  \}}
+  
+  \CommentTok{\# Filter out customers who did not complete service }
+  \CommentTok{\#(e.g., still in queue at end)}
+\NormalTok{  customer\_df }\OtherTok{\textless{}{-}}\NormalTok{ customer\_df[}\SpecialCharTok{!}\FunctionTok{is.na}\NormalTok{(customer\_df}\SpecialCharTok{$}\NormalTok{checkout\_end\_time), ]}
+  
+  \CommentTok{\# 1. The average waiting time experienced by customers at each checkout counter}
+\NormalTok{  customer\_df}\SpecialCharTok{$}\NormalTok{waiting\_time }\OtherTok{\textless{}{-}}\NormalTok{ customer\_df}\SpecialCharTok{$}\NormalTok{checkout\_start\_time }\SpecialCharTok{{-}} 
+\NormalTok{                              customer\_df}\SpecialCharTok{$}\NormalTok{shopping\_complete\_time}
+\NormalTok{  avg\_waiting\_time\_per\_counter }\OtherTok{\textless{}{-}} \FunctionTok{tapply}\NormalTok{(customer\_df}\SpecialCharTok{$}\NormalTok{waiting\_time, }
+\NormalTok{                                         customer\_df}\SpecialCharTok{$}\NormalTok{assigned\_counter\_id, }
+\NormalTok{                                         mean, }\AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+  
+  \CommentTok{\# 2. The average time a customer spends in the supermarket}
+\NormalTok{  customer\_df}\SpecialCharTok{$}\NormalTok{total\_time\_in\_supermarket }\OtherTok{\textless{}{-}}\NormalTok{ customer\_df}\SpecialCharTok{$}\NormalTok{checkout\_end\_time }\SpecialCharTok{{-}} 
+\NormalTok{                                          customer\_df}\SpecialCharTok{$}\NormalTok{arrival\_time}
+\NormalTok{  avg\_total\_time\_in\_supermarket }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(customer\_df}\SpecialCharTok{$}\NormalTok{total\_time\_in\_supermarket, }
+                                        \AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+  
+  \CommentTok{\# 3. The utilisation of each cashier per day}
+  \CommentTok{\# Calculate busy time for each counter}
+\NormalTok{  busy\_time\_per\_counter }\OtherTok{\textless{}{-}} \FunctionTok{tapply}\NormalTok{(customer\_df}\SpecialCharTok{$}\NormalTok{checkout\_end\_time }\SpecialCharTok{{-}} 
+\NormalTok{                                    customer\_df}\SpecialCharTok{$}\NormalTok{checkout\_start\_time, }
+\NormalTok{                                  customer\_df}\SpecialCharTok{$}\NormalTok{assigned\_counter\_id, sum, }
+                                  \AttributeTok{na.rm =} \ConstantTok{TRUE}\NormalTok{)}
+  
+\NormalTok{  cashier\_utilization }\OtherTok{\textless{}{-}}\NormalTok{ busy\_time\_per\_counter }\SpecialCharTok{/}\NormalTok{ simulation\_duration}
+  \FunctionTok{names}\NormalTok{(cashier\_utilization) }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Counter\_"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(service\_rates))}
+  
+  \CommentTok{\# 4. The total number of customers served per day}
+\NormalTok{  total\_customers\_served }\OtherTok{\textless{}{-}} \FunctionTok{nrow}\NormalTok{(customer\_df)}
+  
+  \FunctionTok{return}\NormalTok{(}\FunctionTok{list}\NormalTok{(}
+    \AttributeTok{avg\_waiting\_time\_per\_counter =}\NormalTok{ avg\_waiting\_time\_per\_counter,}
+    \AttributeTok{avg\_total\_time\_in\_supermarket =}\NormalTok{ avg\_total\_time\_in\_supermarket,}
+    \AttributeTok{cashier\_utilization =}\NormalTok{ cashier\_utilization,}
+    \AttributeTok{total\_customers\_served =}\NormalTok{ total\_customers\_served}
+\NormalTok{  ))}
+\NormalTok{\}}
+
+
+\CommentTok{\# {-}{-}{-} Multiple Simulation Replications {-}{-}{-}}
+
+\NormalTok{num\_simulations }\OtherTok{\textless{}{-}} \DecValTok{30}
+\NormalTok{all\_kpis }\OtherTok{\textless{}{-}} \FunctionTok{vector}\NormalTok{(}\StringTok{"list"}\NormalTok{, num\_simulations)}
+
+\ControlFlowTok{for}\NormalTok{ (i }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_simulations) \{}
+\NormalTok{  results }\OtherTok{\textless{}{-}} \FunctionTok{run\_simulation}\NormalTok{()}
+\NormalTok{  kpis }\OtherTok{\textless{}{-}} \FunctionTok{calculate\_kpis}\NormalTok{(results, service\_rates, simulation\_duration)}
+\NormalTok{  all\_kpis[[i]] }\OtherTok{\textless{}{-}}\NormalTok{ kpis}
+  \FunctionTok{cat}\NormalTok{(}\StringTok{"Simulation"}\NormalTok{, i, }\StringTok{"complete}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\NormalTok{\}}
+
+\CommentTok{\# Convert results to data.frame/matrix for easier manipulation}
+
+\CommentTok{\# 1. Average waiting time per counter (store as matrix: rows=simulations, cols=counters)}
+\NormalTok{wait\_mat }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, }\FunctionTok{lapply}\NormalTok{(all\_kpis, }
+                                  \ControlFlowTok{function}\NormalTok{(k) }
+                                    \FunctionTok{as.numeric}\NormalTok{(k}\SpecialCharTok{$}\NormalTok{avg\_waiting\_time\_per\_counter)))}
+\FunctionTok{colnames}\NormalTok{(wait\_mat) }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Counter\_"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_counters)}
+
+\CommentTok{\# 2. Average total time in supermarket (vector)}
+\NormalTok{avg\_total\_time }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(all\_kpis, }\ControlFlowTok{function}\NormalTok{(k) k}\SpecialCharTok{$}\NormalTok{avg\_total\_time\_in\_supermarket)}
+
+\CommentTok{\# 3. Cashier utilization (matrix)}
+\NormalTok{util\_mat }\OtherTok{\textless{}{-}} \FunctionTok{do.call}\NormalTok{(rbind, }\FunctionTok{lapply}\NormalTok{(all\_kpis, }
+                                  \ControlFlowTok{function}\NormalTok{(k) }\FunctionTok{as.numeric}\NormalTok{(k}\SpecialCharTok{$}\NormalTok{cashier\_utilization)))}
+\FunctionTok{colnames}\NormalTok{(util\_mat) }\OtherTok{\textless{}{-}} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Counter\_"}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_counters)}
+
+\CommentTok{\# 4. Total customers served (vector)}
+\NormalTok{n\_served }\OtherTok{\textless{}{-}} \FunctionTok{sapply}\NormalTok{(all\_kpis, }\ControlFlowTok{function}\NormalTok{(k) k}\SpecialCharTok{$}\NormalTok{total\_customers\_served)}
+
+\CommentTok{\# Summarize output}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{{-}{-}{-} KPI Summary over"}\NormalTok{, num\_simulations, }\StringTok{"runs {-}{-}{-}}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Average waiting time per counter (mean ± sd):}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_counters) \{}
+  \FunctionTok{cat}\NormalTok{(}
+    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"Counter \%d: \%.2f ± \%.2f minutes}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }
+\NormalTok{            j, }\FunctionTok{mean}\NormalTok{(wait\_mat[,j]), }\FunctionTok{sd}\NormalTok{(wait\_mat[,j]))}
+\NormalTok{  )}
+\NormalTok{\}}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Average total time in supermarket (mean ± sd):}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%.2f ± \%.2f minutes}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }\FunctionTok{mean}\NormalTok{(avg\_total\_time), }\FunctionTok{sd}\NormalTok{(avg\_total\_time)))}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Cashier utilization (mean ± sd):}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\ControlFlowTok{for}\NormalTok{ (j }\ControlFlowTok{in} \DecValTok{1}\SpecialCharTok{:}\NormalTok{num\_counters) \{}
+  \FunctionTok{cat}\NormalTok{(}
+    \FunctionTok{sprintf}\NormalTok{(}\StringTok{"Counter \%d: \%.3f ± \%.3f}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }
+\NormalTok{            j, }\FunctionTok{mean}\NormalTok{(util\_mat[,j]), }\FunctionTok{sd}\NormalTok{(util\_mat[,j]))}
+\NormalTok{  )}
+\NormalTok{\}}
+
+\FunctionTok{cat}\NormalTok{(}\StringTok{"}\SpecialCharTok{\textbackslash{}n}\StringTok{Total customers served per day (mean ± sd):}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{)}
+\FunctionTok{cat}\NormalTok{(}\FunctionTok{sprintf}\NormalTok{(}\StringTok{"\%.2f ± \%.2f}\SpecialCharTok{\textbackslash{}n}\StringTok{"}\NormalTok{, }\FunctionTok{mean}\NormalTok{(n\_served), }\FunctionTok{sd}\NormalTok{(n\_served)))}
+
+
+\CommentTok{\# Calculate mean and sd for each counter}
+\NormalTok{wait\_mean }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(wait\_mat)}
+\NormalTok{wait\_sd }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(wait\_mat, }\DecValTok{2}\NormalTok{, sd)}
+
+\NormalTok{util\_mean }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(util\_mat)}
+\NormalTok{util\_sd }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(util\_mat, }\DecValTok{2}\NormalTok{, sd)}
+
+\CommentTok{\# Summary for total\_time and customers served}
+\NormalTok{avg\_time\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(avg\_total\_time)}
+\NormalTok{avg\_time\_sd }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(avg\_total\_time)}
+\NormalTok{served\_mean }\OtherTok{\textless{}{-}} \FunctionTok{mean}\NormalTok{(n\_served)}
+\NormalTok{served\_sd }\OtherTok{\textless{}{-}} \FunctionTok{sd}\NormalTok{(n\_served)}
+
+\CommentTok{\# Combine into printable tables}
+\NormalTok{wait\_table }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Counter =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Counter "}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(wait\_mat)),}
+  \AttributeTok{Mean\_Waiting\_Time =} \FunctionTok{round}\NormalTok{(wait\_mean, }\DecValTok{2}\NormalTok{),}
+  \AttributeTok{SD\_Waiting\_Time =} \FunctionTok{round}\NormalTok{(wait\_sd, }\DecValTok{2}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{util\_table }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{Counter =} \FunctionTok{paste0}\NormalTok{(}\StringTok{"Counter "}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\FunctionTok{ncol}\NormalTok{(util\_mat)),}
+  \AttributeTok{Mean\_Utilization =} \FunctionTok{round}\NormalTok{(util\_mean, }\DecValTok{3}\NormalTok{),}
+  \AttributeTok{SD\_Utilization =} \FunctionTok{round}\NormalTok{(util\_sd, }\DecValTok{3}\NormalTok{)}
+\NormalTok{)}
+
+\NormalTok{summary\_table }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{KPI =} \FunctionTok{c}\NormalTok{(}\StringTok{"Avg. Total Time in Supermarket"}\NormalTok{, }\StringTok{"Total Customers Served"}\NormalTok{),}
+  \AttributeTok{Mean =} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(avg\_time\_mean, }\DecValTok{2}\NormalTok{), }\FunctionTok{round}\NormalTok{(served\_mean, }\DecValTok{2}\NormalTok{)),}
+  \AttributeTok{SD =} \FunctionTok{c}\NormalTok{(}\FunctionTok{round}\NormalTok{(avg\_time\_sd, }\DecValTok{2}\NormalTok{), }\FunctionTok{round}\NormalTok{(served\_sd, }\DecValTok{2}\NormalTok{))}
+\NormalTok{)}
+
+\CommentTok{\# Print tables}
+\NormalTok{wait\_table}
+\NormalTok{util\_table}
+\NormalTok{summary\_table}
+
+
+\CommentTok{\# Calculate means and standard deviations from simulation outputs}
+\NormalTok{wait\_mean }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(wait\_mat)}
+\NormalTok{wait\_sd }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(wait\_mat, }\DecValTok{2}\NormalTok{, sd)}
+
+\NormalTok{util\_mean }\OtherTok{\textless{}{-}} \FunctionTok{colMeans}\NormalTok{(util\_mat)}
+\NormalTok{util\_sd }\OtherTok{\textless{}{-}} \FunctionTok{apply}\NormalTok{(util\_mat, }\DecValTok{2}\NormalTok{, sd)}
+
+\CommentTok{\# Bar plot: Average Waiting Time per Counter (with error bars)}
+\NormalTok{bar\_centers }\OtherTok{\textless{}{-}} \FunctionTok{barplot}\NormalTok{(}
+\NormalTok{  wait\_mean,}
+  \AttributeTok{names.arg =} \FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}Counter\textquotesingle{}}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(wait\_mean)),}
+  \AttributeTok{col =} \StringTok{\textquotesingle{}skyblue\textquotesingle{}}\NormalTok{,}
+  \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FunctionTok{max}\NormalTok{(wait\_mean }\SpecialCharTok{+}\NormalTok{ wait\_sd) }\SpecialCharTok{*} \FloatTok{1.1}\NormalTok{),}
+  \AttributeTok{ylab =} \StringTok{\textquotesingle{}Average Waiting Time (min)\textquotesingle{}}\NormalTok{,}
+  \AttributeTok{main =} \StringTok{\textquotesingle{}Average Waiting Time per Counter\textquotesingle{}}
+\NormalTok{)}
+\FunctionTok{arrows}\NormalTok{(}
+  \AttributeTok{x0 =}\NormalTok{ bar\_centers,}
+  \AttributeTok{y0 =}\NormalTok{ wait\_mean }\SpecialCharTok{{-}}\NormalTok{ wait\_sd,}
+  \AttributeTok{x1 =}\NormalTok{ bar\_centers,}
+  \AttributeTok{y1 =}\NormalTok{ wait\_mean }\SpecialCharTok{+}\NormalTok{ wait\_sd,}
+  \AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{code =} \DecValTok{3}\NormalTok{, }\AttributeTok{length =} \FloatTok{0.05}
+\NormalTok{)}
+
+\CommentTok{\# Bar plot: Cashier Utilization per Counter (with error bars)}
+\NormalTok{bar\_centers2 }\OtherTok{\textless{}{-}} \FunctionTok{barplot}\NormalTok{(}
+\NormalTok{  util\_mean,}
+  \AttributeTok{names.arg =} \FunctionTok{paste}\NormalTok{(}\StringTok{\textquotesingle{}Counter\textquotesingle{}}\NormalTok{, }\DecValTok{1}\SpecialCharTok{:}\FunctionTok{length}\NormalTok{(util\_mean)),}
+  \AttributeTok{col =} \StringTok{\textquotesingle{}salmon\textquotesingle{}}\NormalTok{,}
+  \AttributeTok{ylim =} \FunctionTok{c}\NormalTok{(}\DecValTok{0}\NormalTok{, }\FunctionTok{max}\NormalTok{(util\_mean }\SpecialCharTok{+}\NormalTok{ util\_sd) }\SpecialCharTok{*} \FloatTok{1.1}\NormalTok{),}
+  \AttributeTok{ylab =} \StringTok{\textquotesingle{}Cashier Utilization\textquotesingle{}}\NormalTok{,}
+  \AttributeTok{main =} \StringTok{\textquotesingle{}Cashier Utilization per Counter\textquotesingle{}}
+\NormalTok{)}
+\FunctionTok{arrows}\NormalTok{(}
+  \AttributeTok{x0 =}\NormalTok{ bar\_centers2,}
+  \AttributeTok{y0 =}\NormalTok{ util\_mean }\SpecialCharTok{{-}}\NormalTok{ util\_sd,}
+  \AttributeTok{x1 =}\NormalTok{ bar\_centers2,}
+  \AttributeTok{y1 =}\NormalTok{ util\_mean }\SpecialCharTok{+}\NormalTok{ util\_sd,}
+  \AttributeTok{angle =} \DecValTok{90}\NormalTok{, }\AttributeTok{code =} \DecValTok{3}\NormalTok{, }\AttributeTok{length =} \FloatTok{0.05}
+\NormalTok{)}
+
+
+
+\CommentTok{\# Histogram: Average Total Time in Supermarket}
+\FunctionTok{hist}\NormalTok{(avg\_total\_time,}
+     \AttributeTok{breaks =} \DecValTok{10}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Average Total Time in Supermarket"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Minutes"}\NormalTok{,}
+     \AttributeTok{col =} \StringTok{"lightblue"}\NormalTok{,}
+     \AttributeTok{border =} \StringTok{"black"}\NormalTok{)}
+
+\CommentTok{\# Histogram: Total Customers Served Per Day}
+\FunctionTok{hist}\NormalTok{(n\_served,}
+     \AttributeTok{breaks =} \DecValTok{10}\NormalTok{,}
+     \AttributeTok{main =} \StringTok{"Total Customers Served Per Day"}\NormalTok{,}
+     \AttributeTok{xlab =} \StringTok{"Customers"}\NormalTok{,}
+     \AttributeTok{col =} \StringTok{"lightgreen"}\NormalTok{,}
+     \AttributeTok{border =} \StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\justifying
+
+\subsection{Parameter Settings}\label{parameter-settings}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.2667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.7333}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+Setting
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Value
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Simulation Runs & 30 \\
+Opening Hours & 8:00 AM -- 9:00 PM (780 minutes) \\
+Arrival Rate & \(\lambda\) = 5 customers/minute \\
+Shopping Time & Log-normal(meanlog=0, sdlog=0.5) \\
+Service Rates & 1/2.5, 1/3, 1/3.5, 1/4 customers/min (Counters 1--4) \\
+\end{longtable}
+
+\justifying
+
+\subsection{Output Summaries}\label{output-summaries}
+
+\begin{longtable}[]{@{}llrr@{}}
+\toprule\noalign{}
+& Counter & Mean\_Waiting\_Time & SD\_Waiting\_Time \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Counter\_1 & Counter 1 & 907.44 & 42.68 \\
+Counter\_2 & Counter 2 & 1098.81 & 40.33 \\
+Counter\_3 & Counter 3 & 1264.63 & 49.76 \\
+Counter\_4 & Counter 4 & 1444.10 & 50.90 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}llrr@{}}
+\toprule\noalign{}
+& Counter & Mean\_Utilization & SD\_Utilization \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Counter\_1 & Counter 1 & 3.328 & 0.112 \\
+Counter\_2 & Counter 2 & 3.806 & 0.116 \\
+Counter\_3 & Counter 3 & 4.259 & 0.125 \\
+Counter\_4 & Counter 4 & 4.681 & 0.119 \\
+\end{longtable}
+
+\begin{longtable}[]{@{}lrr@{}}
+\toprule\noalign{}
+KPI & Mean & SD \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Average Total Time in Supermarket & 1174.28 & 34.97 \\
+Total Customers Served & 3872.37 & 75.09 \\
+\end{longtable}
+
+\newpage
+\centering
+
+\section{References}\label{references}
+
+\justifying
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Gross, D., Shortle, J. F., Thompson, J. M., \& Harris, C. M. (2013).
+  \emph{Fundamentals of Queueing Theory} (4th ed.). Wiley.
+\item
+  Little, J. D. C. (1961). A proof for the queueing formula:
+  L=\(\lambda\)W. \emph{Operations Research}, 9(3), 383--387.
+\item
+  \href{https://en.wikipedia.org/wiki/Queueing_theory}{Queueing Theory
+  (Wikipedia)}
+\item
+  \href{https://www.bbc.com/worklife/article/20190909-how-supermarkets-cut-their-checkout-queues}{How
+  Supermarkets Cut Checkout Queues (BBC)}
+\end{enumerate}
+
+\end{document}
